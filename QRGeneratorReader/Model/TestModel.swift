@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Emogi {
     var emogi: String

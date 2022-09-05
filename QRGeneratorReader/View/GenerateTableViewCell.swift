@@ -9,19 +9,20 @@ import UIKit
 
 class GenerateTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var emogi: UILabel!
-    @IBOutlet weak var emogiName: UILabel!
-    @IBOutlet weak var emogiDescription: UILabel!
+
+    @IBOutlet weak var qrImageView: UIImageView!
+    @IBOutlet weak var qrTypeLabel: UILabel!
+    @IBOutlet weak var qrInfoLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
-    func set(object: Emogi){
-        self.emogi.text = object.emogi
-        self.emogiDescription.text = object.descriptions
-        self.emogiName.text = object.name
+    func set(object: QRData){
+        qrImageView.image = object.qrImg
+        qrTypeLabel.text = object.qrType
+        qrInfoLabel.text = object.qrInfo
     }
     
 }
