@@ -36,6 +36,7 @@ class QRGeneratorEditVC: UIViewController {
         ) {
             print("Create QRCode image success \(image)")
             qrImageView.image = UIImage(cgImage: image)
+            claimImage = UIImage(cgImage: image)
             img = UIImage(cgImage: image)
         } else { }
     }
@@ -47,6 +48,17 @@ class QRGeneratorEditVC: UIViewController {
             show(genTableVC, sender: nil)
         }
     }
+    
+    @IBAction func shareButton(_ sender: UIButton) {
+        let shareController = UIActivityViewController(activityItems: [claimImage!], applicationActivities: nil)
+        shareController.completionWithItemsHandler = { _, bool, _, _ in
+            if bool {
+                print("Успешно!")
+            }
+        }
+        present(shareController, animated: true, completion: nil)
+    }
+    
     
     //MARK: - Work with Segue
     @IBAction func unwind( _ seg: UIStoryboardSegue) {

@@ -332,6 +332,9 @@
                                     </imageReference>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                 </state>
+                                <connections>
+                                    <action selector="shareButton:" destination="gbe-I0-mkN" eventType="touchUpInside" id="OMo-xE-xfo"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7um-If-W8E"/>
