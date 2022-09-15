@@ -23,7 +23,7 @@ class GenerateTableVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "Emogi Reader"
+        self.title = "QR Generator"
         self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 

@@ -22,6 +22,7 @@
 		0B4C051428BA4FDA00891747 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B4C051328BA4FDA00891747 /* Assets.xcassets */; };
 		0B4C051728BA4FDA00891747 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B4C051528BA4FDA00891747 /* LaunchScreen.storyboard */; };
 		0BF3602728D0D3F800F407C1 /* EditTextTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF3602628D0D3F800F407C1 /* EditTextTableVC.swift */; };
+		0BF3602928D184D800F407C1 /* QRReaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF3602828D184D800F407C1 /* QRReaderVC.swift */; };
 		D8B0CED16678639F38E9E44A /* Pods_QRGeneratorReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD1D3513E995DEECDD5707BB /* Pods_QRGeneratorReader.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		0B4C051628BA4FDA00891747 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0B4C051828BA4FDA00891747 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0BF3602628D0D3F800F407C1 /* EditTextTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTextTableVC.swift; sourceTree = "<group>"; };
+		0BF3602828D184D800F407C1 /* QRReaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRReaderVC.swift; sourceTree = "<group>"; };
 		4439684347A3D96D134E614D /* Pods-QRGeneratorReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRGeneratorReader.debug.xcconfig"; path = "Target Support Files/Pods-QRGeneratorReader/Pods-QRGeneratorReader.debug.xcconfig"; sourceTree = "<group>"; };
 		AD1D3513E995DEECDD5707BB /* Pods_QRGeneratorReader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRGeneratorReader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E94B0ABFBF8509481B9119CB /* Pods-QRGeneratorReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRGeneratorReader.release.xcconfig"; path = "Target Support Files/Pods-QRGeneratorReader/Pods-QRGeneratorReader.release.xcconfig"; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				0B3B17AF28C8B7DA00436F0E /* TestRadioButtonViewController.swift */,
 				0B077FDD28CDA33700BFCE92 /* EditQRVC.swift */,
 				0BF3602628D0D3F800F407C1 /* EditTextTableVC.swift */,
+				0BF3602828D184D800F407C1 /* QRReaderVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BF3602928D184D800F407C1 /* QRReaderVC.swift in Sources */,
 				0B1A9CC728C345430016A159 /* GenerateTableVC.swift in Sources */,
 				0B4C050828BA4FD900891747 /* AppDelegate.swift in Sources */,
 				0B3B17B028C8B7DA00436F0E /* TestRadioButtonViewController.swift in Sources */,
@@ -344,7 +348,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -398,7 +402,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
