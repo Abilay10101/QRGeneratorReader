@@ -9,12 +9,6 @@ import UIKit
 
 class GenerateTableVC: UITableViewController {
     
-    /*var objects = [
-        Emogi(emogi: "😍", name: "Love", descriptions: "Lets love each other"),
-        Emogi(emogi: "🤖", name: "Robot", descriptions: "Lets robot each other"),
-        Emogi(emogi: "💩", name: "Poop", descriptions: "Lets poop each other")
-    ]*/
-    
     var objects = [
         QRData(qrImg: UIImage(named: "qr1")!, qrType: "Text", qrInfo: "dkslafdjl"),
         QRData(qrImg: UIImage(named: "qr2")!, qrType: "Text", qrInfo: "akfhdahff")

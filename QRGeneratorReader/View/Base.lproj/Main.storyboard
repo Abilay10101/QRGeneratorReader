@@ -7,6 +7,7 @@
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -32,24 +33,89 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="lXT-t0-VHI">
-                        <barButtonItem key="leftBarButtonItem" image="flashlight.on.fill" catalog="system" id="CC1-1b-gSH">
-                            <connections>
-                                <action selector="lightning:" destination="y7c-Ka-1hW" id="sxT-8W-wxD"/>
-                            </connections>
-                        </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem id="VXZ-1F-3bi"/>
-                            <barButtonItem image="plus.circle" catalog="system" id="8eM-2d-O3x">
+                        <leftBarButtonItems>
+                            <barButtonItem title="flashlight.on.fill" image="flashlight.on.fill" catalog="system" id="CC1-1b-gSH">
+                                <connections>
+                                    <action selector="lightning:" destination="y7c-Ka-1hW" id="sxT-8W-wxD"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="plus.magnifyingglass" catalog="system" largeContentSizeImage="plus.magnifyingglass" id="8eM-2d-O3x">
                                 <connections>
                                     <action selector="cameraZoom:" destination="y7c-Ka-1hW" id="DCn-j4-etf"/>
                                 </connections>
                             </barButtonItem>
+                        </leftBarButtonItems>
+                        <rightBarButtonItems>
+                            <barButtonItem id="VXZ-1F-3bi"/>
+                            <barButtonItem title="Item" image="questionmark.circle" catalog="system" id="BTl-JB-Jxz">
+                                <connections>
+                                    <segue destination="Z44-aQ-N0M" kind="show" id="pk8-BL-Z5X"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="barcode.viewfinder" catalog="system" id="Fi2-iQ-GQA"/>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="cameraZoomOutlet" destination="8eM-2d-O3x" id="wYe-11-yAH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tQ5-gv-Wk4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2413" y="-413"/>
+        </scene>
+        <!--Поддерживаемые коды-->
+        <scene sceneID="y9z-ga-Awt">
+            <objects>
+                <collectionViewController id="Z44-aQ-N0M" customClass="HelpCollectionVC" customModule="QRGeneratorReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="I6x-YN-6Ej">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RKK-fj-0BK">
+                            <size key="itemSize" width="122" height="120"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="hna-kR-pYJ" customClass="HelpCollectionViewCell" customModule="QRGeneratorReader" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="E8n-La-vgl">
+                                    <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wbk-vu-LTG">
+                                            <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="160" id="Lpi-Nf-Lq3"/>
+                                                <constraint firstAttribute="height" constant="160" id="NWk-hO-oVY"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Wbk-vu-LTG" firstAttribute="top" secondItem="E8n-La-vgl" secondAttribute="top" id="17G-Mm-Esi"/>
+                                        <constraint firstAttribute="trailing" secondItem="Wbk-vu-LTG" secondAttribute="trailing" id="DyA-21-cZC"/>
+                                        <constraint firstItem="Wbk-vu-LTG" firstAttribute="leading" secondItem="E8n-La-vgl" secondAttribute="leading" id="bYU-CZ-Kzw"/>
+                                        <constraint firstAttribute="bottom" secondItem="Wbk-vu-LTG" secondAttribute="bottom" id="nqy-Ll-Zoh"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <size key="customSize" width="160" height="160"/>
+                                <connections>
+                                    <outlet property="imaga" destination="Wbk-vu-LTG" id="hZi-55-k6B"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="Z44-aQ-N0M" id="fnl-8C-2mp"/>
+                            <outlet property="delegate" destination="Z44-aQ-N0M" id="7gz-ow-yBm"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Поддерживаемые коды" id="94N-mM-WAk"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cer-Vy-6HH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3392.753623188406" y="-413.16964285714283"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ovh-8x-hml">
@@ -168,7 +234,7 @@
             </objects>
             <point key="canvasLocation" x="2414" y="844"/>
         </scene>
-        <!--Item-->
+        <!--Options-->
         <scene sceneID="pzN-8D-ASd">
             <objects>
                 <tableViewController id="lzg-cF-UdI" sceneMemberID="viewController">
@@ -191,7 +257,7 @@
                             <outlet property="delegate" destination="lzg-cF-UdI" id="kMh-gv-Uzd"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="cCS-Gh-Ufv"/>
+                    <tabBarItem key="tabBarItem" title="Options" image="list.bullet" catalog="system" id="cCS-Gh-Ufv"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iQW-JH-NIp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -779,11 +845,11 @@
             </objects>
             <point key="canvasLocation" x="6525" y="1758"/>
         </scene>
-        <!--Item 1-->
+        <!--QR reader-->
         <scene sceneID="E7H-pL-J3I">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="o1k-PD-9is" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 1" id="tjO-6g-eW6"/>
+                    <tabBarItem key="tabBarItem" title="QR reader" image="qrcode.viewfinder" catalog="system" id="tjO-6g-eW6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="J0M-CO-YiF">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -800,14 +866,18 @@
         </scene>
     </scenes>
     <resources>
+        <image name="barcode.viewfinder" catalog="system" width="128" height="115"/>
         <image name="circle" width="65" height="65"/>
         <image name="diamond" width="65" height="65"/>
         <image name="doc.badge.gearshape.fill" catalog="system" width="122" height="128"/>
         <image name="flashlight.on.fill" catalog="system" width="76" height="128"/>
+        <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="paintpalette.fill" catalog="system" width="128" height="105"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <image name="plus.circle" catalog="system" width="128" height="121"/>
+        <image name="plus.magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="qrcode" catalog="system" width="128" height="114"/>
+        <image name="qrcode.viewfinder" catalog="system" width="128" height="115"/>
+        <image name="questionmark.circle" catalog="system" width="128" height="121"/>
         <image name="song" width="718" height="702"/>
         <image name="square" width="65" height="65"/>
         <image name="square.and.arrow.up.fill" catalog="system" width="115" height="128"/>

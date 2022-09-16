@@ -13,10 +13,18 @@ class QRReaderVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate{
     var video: AVCaptureVideoPreviewLayer!
     //Настройка сессии
     let session = AVCaptureSession()
-
+    
+    var flag = false
+    var flagImage = false
+    var flagFlashlite = false
+    
+    @IBOutlet weak var cameraZoomOutlet: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupVideo()
+        startRunning()
+        
     }
     
     
@@ -59,8 +67,8 @@ class QRReaderVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate{
                 }))
                 alert.addAction(UIAlertAction(title: "Копировать", style: .default, handler: { action in
                     UIPasteboard.general.string = object.stringValue
-                    self.view.layer.sublayers?.removeLast()
-                    self.session.stopRunning()
+                    //self.view.layer.sublayers?.removeLast()
+                    //self.session.stopRunning()
                 }))
                 present(alert, animated: true)
             }
@@ -68,6 +76,15 @@ class QRReaderVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate{
     }
     
     @IBAction func lightning(_ sender: UIBarButtonItem) {
+        
+        if flagFlashlite == false {
+            sender.image = UIImage(systemName: "flashlight.off.fill")
+            flagFlashlite = true
+        } else {
+            sender.image = UIImage(systemName: "flashlight.on.fill")
+            flagFlashlite = false
+        }
+        
         let device = AVCaptureDevice.default(for: AVMediaType.video)
         if ((device?.hasTorch) != nil) {
             do {
@@ -81,19 +98,41 @@ class QRReaderVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate{
     }
     
     @IBAction func cameraZoom(_ sender: UIBarButtonItem) {
-        var device = AVCaptureDevice.default(for: AVMediaType.video)
-        var vZoomFactor = 1.0
-        var error:NSError!
+        
+        if flagImage == false {
+            //cameraZoomOutlet.setBackgroundImage(UIImage(systemName: "minus.magnifyingglass"), for: .normal, barMetrics: .default)
+            sender.image = UIImage(systemName: "minus.magnifyingglass")
+            
+            flagImage = true
+        } else {
+            //cameraZoomOutlet.setBackgroundImage(UIImage(systemName: "plus.magnifyingglass"), for: .normal, barMetrics: .default)
+            sender.image = UIImage(systemName: "plus.magnifyingglass")
+            flagImage = false
+        }
+        
+        let device = AVCaptureDevice.default(for: AVMediaType.video)
+        let vZoomFactor = 1.0
+        
         
         do {
             try device?.lockForConfiguration()
             defer {device?.unlockForConfiguration()}
             
             if (vZoomFactor <= Double((device?.activeFormat.videoMaxZoomFactor)!)) {
-
-                let desiredZoomFactor:CGFloat = vZoomFactor + atan2(sender.velocity, 5.0);
                 
-                device?.videoZoomFactor = max(1.0, min(desiredZoomFactor, (device?.activeFormat.videoMaxZoomFactor)!));
+                let desiredZoomFactor:CGFloat?
+                
+                if self.flag == false {
+                    desiredZoomFactor = vZoomFactor + atan2(10.0, 5.0);
+                    self.flag = true
+                } else {
+                    desiredZoomFactor = vZoomFactor + atan2(0, 5.0);
+                    self.flag = false
+                }
+
+                
+                
+                device?.videoZoomFactor = max(1.0, min(desiredZoomFactor!, (device?.activeFormat.videoMaxZoomFactor)!));
                 
             } else { }
         } catch { }

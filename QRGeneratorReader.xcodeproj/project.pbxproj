@@ -12,6 +12,8 @@
 		0B1A9CC928C345820016A159 /* GenerateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1A9CC828C345820016A159 /* GenerateTableViewCell.swift */; };
 		0B1A9CCB28C346940016A159 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1A9CCA28C346940016A159 /* TestModel.swift */; };
 		0B1A9CCF28C4ECC30016A159 /* SaveTestTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1A9CCE28C4ECC30016A159 /* SaveTestTableVC.swift */; };
+		0B29053528D439610006768E /* HelpCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B29053428D439610006768E /* HelpCollectionViewCell.swift */; };
+		0B29053728D439DD0006768E /* HelpCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B29053628D439DD0006768E /* HelpCollectionVC.swift */; };
 		0B2D4BE828C637BE00923711 /* QRData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2D4BE728C637BE00923711 /* QRData.swift */; };
 		0B2D4BEA28C63FFD00923711 /* QRGeneratorEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2D4BE928C63FFD00923711 /* QRGeneratorEditVC.swift */; };
 		0B3B17B028C8B7DA00436F0E /* TestRadioButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3B17AF28C8B7DA00436F0E /* TestRadioButtonViewController.swift */; };
@@ -32,6 +34,8 @@
 		0B1A9CC828C345820016A159 /* GenerateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateTableViewCell.swift; sourceTree = "<group>"; };
 		0B1A9CCA28C346940016A159 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		0B1A9CCE28C4ECC30016A159 /* SaveTestTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveTestTableVC.swift; sourceTree = "<group>"; };
+		0B29053428D439610006768E /* HelpCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpCollectionViewCell.swift; sourceTree = "<group>"; };
+		0B29053628D439DD0006768E /* HelpCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpCollectionVC.swift; sourceTree = "<group>"; };
 		0B2D4BE728C637BE00923711 /* QRData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRData.swift; sourceTree = "<group>"; };
 		0B2D4BE928C63FFD00923711 /* QRGeneratorEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRGeneratorEditVC.swift; sourceTree = "<group>"; };
 		0B3B17AF28C8B7DA00436F0E /* TestRadioButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRadioButtonViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +118,7 @@
 				0B077FDD28CDA33700BFCE92 /* EditQRVC.swift */,
 				0BF3602628D0D3F800F407C1 /* EditTextTableVC.swift */,
 				0BF3602828D184D800F407C1 /* QRReaderVC.swift */,
+				0B29053628D439DD0006768E /* HelpCollectionVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -132,6 +137,7 @@
 			children = (
 				0B4C050D28BA4FD900891747 /* Main.storyboard */,
 				0B1A9CC828C345820016A159 /* GenerateTableViewCell.swift */,
+				0B29053428D439610006768E /* HelpCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -270,7 +276,9 @@
 				0B1A9CCF28C4ECC30016A159 /* SaveTestTableVC.swift in Sources */,
 				0B2D4BE828C637BE00923711 /* QRData.swift in Sources */,
 				0BF3602728D0D3F800F407C1 /* EditTextTableVC.swift in Sources */,
+				0B29053728D439DD0006768E /* HelpCollectionVC.swift in Sources */,
 				0B1A9CCB28C346940016A159 /* TestModel.swift in Sources */,
+				0B29053528D439610006768E /* HelpCollectionViewCell.swift in Sources */,
 				0B1A9CC928C345820016A159 /* GenerateTableViewCell.swift in Sources */,
 				0B4C051228BA4FD900891747 /* QRGeneratorReader.xcdatamodeld in Sources */,
 			);
