@@ -17,6 +17,10 @@ class QRReaderVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate{
     var flag = false
     var flagImage = false
     var flagFlashlite = false
+    var flagChangeButton = false
+    
+    let pathToSound = Bundle.main.path(forResource: "iphone_sound", ofType: "mp3")!
+    
     
     @IBOutlet weak var cameraZoomOutlet: UIBarButtonItem!
     
@@ -24,7 +28,6 @@ class QRReaderVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate{
         super.viewDidLoad()
         setupVideo()
         startRunning()
-        
     }
     
     
@@ -53,27 +56,51 @@ class QRReaderVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate{
         session.startRunning()
     }
     
+    func failed() {
+            let ac = UIAlertController(title: "Scanning not supported", message: "Your device does not support scanning a code from an item. Please use a device with a camera.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
+
     @IBAction func startScanning(_ sender: UIButton) {
         startRunning()
     }
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         guard metadataObjects.count > 0 else { return }
-        if let object = metadataObjects.first as? AVMetadataMachineReadableCodeObject {
-            if object.type == AVMetadataObject.ObjectType.qr {
-                let alert = UIAlertController(title: "QR Code", message: object.stringValue, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Перейти", style: .default, handler: { action in
-                    print(object.stringValue ?? "")
-                }))
-                alert.addAction(UIAlertAction(title: "Копировать", style: .default, handler: { action in
-                    UIPasteboard.general.string = object.stringValue
-                    //self.view.layer.sublayers?.removeLast()
-                    //self.session.stopRunning()
-                }))
-                present(alert, animated: true)
+        if flagChangeButton == true {
+            if let object = metadataObjects.first as? AVMetadataMachineReadableCodeObject {
+                if object.type == AVMetadataObject.ObjectType.ean8 ||  object.type == .ean13 || object.type == .pdf417 {
+                    let alert = UIAlertController(title: "Bar Code", message: object.stringValue, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Копировать", style: .default, handler: { action in
+                        UIPasteboard.general.string = object.stringValue
+                    }))
+                    present(alert, animated: true)
+                    
+                }
+            }
+            
+        } else {
+            if let object = metadataObjects.first as? AVMetadataMachineReadableCodeObject {
+                if object.type == AVMetadataObject.ObjectType.qr {
+                    
+                    let alert = UIAlertController(title: "QR Code", message: object.stringValue, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Перейти", style: .default, handler: { action in
+                        print(object.stringValue ?? "")
+                    }))
+                    alert.addAction(UIAlertAction(title: "Копировать", style: .default, handler: { action in
+                        UIPasteboard.general.string = object.stringValue
+                        //self.view.layer.sublayers?.removeLast()
+                        //self.session.stopRunning()
+                    }))
+                    present(alert, animated: true)
+                }
             }
         }
+        
     }
+    
+    
     
     @IBAction func lightning(_ sender: UIBarButtonItem) {
         
@@ -136,6 +163,23 @@ class QRReaderVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate{
                 
             } else { }
         } catch { }
+    }
+    
+    
+    
+    @IBAction func changeCode(_ sender: UIBarButtonItem) {
+        if flagChangeButton == true {
+            flagChangeButton = false
+            sender.image = UIImage(systemName: "barcode.viewfinder")
+            self.title = "QR Scanner"
+            print(flagChangeButton)
+        } else {
+            flagChangeButton = true
+            sender.image = UIImage(systemName: "qrcode.viewfinder")
+            self.title = "BC Scanner"
+            print(flagChangeButton)
+            failed()
+        }
     }
     
     
