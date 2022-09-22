@@ -108,7 +108,7 @@ class EditQRVC: UIViewController {
     @IBAction func changeWatermark(_ sender: UIButton) {
         if sender.tag == 1 {
             let generator = EFQRCodeGenerator(content: textForQr)
-            selectedWatermark = UIImage(named: "song")!
+            selectedWatermark = UIImage(named: "wwifi")!
             
             if flaggSquare == true {
                 generator.withPointStyle(squarePositionMarker)
@@ -122,7 +122,65 @@ class EditQRVC: UIViewController {
             
             generator.withColors(backgroundColor: UIColor.white.cgColor, foregroundColor: selectedColor?.cgColor ?? UIColor.black.cgColor)
             
-            generator.withWatermark(UIImage(named: "song")?.cgImage)
+            generator.withWatermark(UIImage(named: "wwifi")?.cgImage)
+            imageView.image = UIImage(cgImage: generator.generate()!)
+        }
+        else if sender.tag == 2 {
+            print("AHAHHAHAHA")
+            let generator = EFQRCodeGenerator(content: textForQr)
+            selectedWatermark = UIImage(named: "food")!
+            
+            if flaggSquare == true {
+                generator.withPointStyle(squarePositionMarker)
+            }
+            else if flaggCircle == true {
+                generator.withPointStyle(circlePositionMarker)
+            }
+            else if flaggDiamond == true {
+                generator.withPointStyle(diamondPositionMarker)
+            }
+            
+            generator.withColors(backgroundColor: UIColor.white.cgColor, foregroundColor: selectedColor?.cgColor ?? UIColor.black.cgColor)
+            
+            generator.withWatermark(UIImage(named: "food")?.cgImage)
+            imageView.image = UIImage(cgImage: generator.generate()!)
+        }
+        else if sender.tag == 3 {
+            let generator = EFQRCodeGenerator(content: textForQr)
+            selectedWatermark = UIImage(named: "site")!
+            
+            if flaggSquare == true {
+                generator.withPointStyle(squarePositionMarker)
+            }
+            else if flaggCircle == true {
+                generator.withPointStyle(circlePositionMarker)
+            }
+            else if flaggDiamond == true {
+                generator.withPointStyle(diamondPositionMarker)
+            }
+            
+            generator.withColors(backgroundColor: UIColor.white.cgColor, foregroundColor: selectedColor?.cgColor ?? UIColor.black.cgColor)
+            
+            generator.withWatermark(UIImage(named: "site")?.cgImage)
+            imageView.image = UIImage(cgImage: generator.generate()!)
+        }
+        else if sender.tag == 4 {
+            let generator = EFQRCodeGenerator(content: textForQr)
+            selectedWatermark = UIImage()
+            
+            if flaggSquare == true {
+                generator.withPointStyle(squarePositionMarker)
+            }
+            else if flaggCircle == true {
+                generator.withPointStyle(circlePositionMarker)
+            }
+            else if flaggDiamond == true {
+                generator.withPointStyle(diamondPositionMarker)
+            }
+            
+            generator.withColors(backgroundColor: UIColor.white.cgColor, foregroundColor: selectedColor?.cgColor ?? UIColor.black.cgColor)
+            
+            //generator.withWatermark(UIImage(named: "site")?.cgImage)
             imageView.image = UIImage(cgImage: generator.generate()!)
         }
     }
@@ -229,6 +287,27 @@ class EditQRVC: UIViewController {
             }
             
             generator.withColors(backgroundColor: UIColor.white.cgColor, foregroundColor: UIColor.cyan.cgColor)
+            
+            guard selectedWatermark != nil else { return }
+            generator.withWatermark(selectedWatermark.cgImage)
+            
+            imageView.image = UIImage(cgImage: generator.generate()!)
+            break
+        case 6:
+            let generator = EFQRCodeGenerator(content: textForQr)
+            selectedColor = UIColor.cyan
+            
+            if flaggSquare == true {
+                generator.withPointStyle(squarePositionMarker)
+            }
+            else if flaggCircle == true {
+                generator.withPointStyle(circlePositionMarker)
+            }
+            else if flaggDiamond == true {
+                generator.withPointStyle(diamondPositionMarker)
+            }
+            
+            generator.withColors(backgroundColor: UIColor.white.cgColor, foregroundColor: UIColor.black.cgColor)
             
             guard selectedWatermark != nil else { return }
             generator.withWatermark(selectedWatermark.cgImage)

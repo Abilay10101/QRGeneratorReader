@@ -7,6 +7,7 @@
 
 import UIKit
 import AVFoundation
+import AudioToolbox
 
 class QRReaderVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate{
     
@@ -19,8 +20,11 @@ class QRReaderVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate{
     var flagFlashlite = false
     var flagChangeButton = false
     
-    let pathToSound = Bundle.main.path(forResource: "iphone_sound", ofType: "mp3")!
+    var soundFlag = true
+    var vibroFlag = true
     
+    var player : AVAudioPlayer?
+    // 4095
     
     @IBOutlet weak var cameraZoomOutlet: UIBarButtonItem!
     
@@ -61,6 +65,23 @@ class QRReaderVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate{
             ac.addAction(UIAlertAction(title: "OK", style: .default))
             present(ac, animated: true)
         }
+    
+    func playSound() {
+        let url = Bundle.main.url(forResource: "iphone_sound", withExtension: "mp3")!
+
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            //player.prepareToPlay()
+
+        } catch let error as NSError {
+            print(error.description)
+        }
+        player!.play()
+    }
+    
+    func vibrateDevice () {
+        
+    }
 
     @IBAction func startScanning(_ sender: UIButton) {
         startRunning()
@@ -92,8 +113,52 @@ class QRReaderVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate{
                         UIPasteboard.general.string = object.stringValue
                         //self.view.layer.sublayers?.removeLast()
                         //self.session.stopRunning()
+                        
+                        DispatchQueue.global(qos: .default).async {
+                            self.playSound()
+                        }
+                        
                     }))
                     present(alert, animated: true)
+                    
+                    let userDefaults = UserDefaults()
+                    if let data = userDefaults.object(forKey: "dataMata") {
+                        if let message = data as? Bool {
+                            self.soundFlag = message
+                        }
+                    }
+                    
+                    let userDefaults2 = UserDefaults()
+                    if let data = userDefaults2.object(forKey: "dataMatka") {
+                        if let message = data as? Bool {
+                            self.vibroFlag = message
+                        }
+                    }
+                    
+                    if alert.isBeingPresented {
+                        
+                        if soundFlag && vibroFlag {
+                            DispatchQueue.global(qos: .default).async {
+                                self.playSound()
+                                AudioServicesPlaySystemSound(SystemSoundID(4095))
+                            }
+                        }
+                        else if soundFlag && !vibroFlag {
+                            DispatchQueue.global(qos: .default).async {
+                                self.playSound()
+                                //AudioServicesPlaySystemSound(SystemSoundID(4095))
+                            }
+                        }
+                        else if !soundFlag && vibroFlag {
+                            DispatchQueue.global(qos: .default).async {
+                                //self.playSound()
+                                AudioServicesPlaySystemSound(SystemSoundID(4095))
+                            }
+                        } else {}
+                        
+                    }
+                    
+                    
                 }
             }
         }
