@@ -38,6 +38,18 @@ class GenerateTableVC: UITableViewController , NSFetchedResultsControllerDelegat
         }
     }
     
+    //MARK: - Work with segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        guard segue.identifier == "preview" else { return }
+        let navigationVC = segue.destination as! PreviewVC
+        let indexPath = tableView.indexPathForSelectedRow!
+        let qrObj = objects[indexPath.row]
+        navigationVC.text = qrObj.qrInfo!
+        navigationVC.img = UIImage(data: qrObj.qrImg!)!
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

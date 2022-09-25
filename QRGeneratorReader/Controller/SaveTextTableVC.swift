@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SaveTestTableVC: UITableViewController {
+class SaveTextTableVC: UITableViewController {
     
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var generateButton: UIBarButtonItem!
