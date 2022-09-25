@@ -19,10 +19,15 @@ class GenerateTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    func set(object: QRData){
-        qrImageView.image = object.qrImg
+    func set(object: QRDataMO){
+        //qrImageView.image = object.qrImg
+        
+        if let qrImageQ = object.qrImg {
+            qrImageView.image = UIImage(data: qrImageQ as Data)
+        }
         qrTypeLabel.text = object.qrType
         qrInfoLabel.text = object.qrInfo
+        
     }
     
 }

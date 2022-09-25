@@ -7,13 +7,18 @@
 
 import UIKit
 import EFQRCode
+import CoreData
 
 class QRGeneratorEditVC: UIViewController {
     
     var textForQR = ""
-    var qrData = QRData(qrImg: UIImage(), qrType: "", qrInfo: "")
+    var qrData: QRDataMO!
     var img = UIImage()
     var claimImage : UIImage?
+    
+    var initialTextLenght = 0
+    var secTextLenght = 0
+    var flagForChangeText = true
 
     @IBOutlet weak var qrImageView: UIImageView!
     
@@ -21,32 +26,59 @@ class QRGeneratorEditVC: UIViewController {
         super.viewDidLoad()
         
         genOrPlace()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        
+        
     }
     
     func genOrPlace () {
-        if claimImage != nil {
+        if claimImage != nil && flagForChangeText == true {
             qrImageView.image = claimImage
             img = claimImage!
         } else { createQR() }
     }
     
     func createQR () {
-        if let image = EFQRCode.generate(
-            for: textForQR
-        ) {
-            print("Create QRCode image success \(image)")
-            qrImageView.image = UIImage(cgImage: image)
-            claimImage = UIImage(cgImage: image)
-            img = UIImage(cgImage: image)
-        } else { }
+        let generator = EFQRCodeGenerator(content: textForQR)
+        qrImageView.image = UIImage(cgImage: generator.generate()!)
+        claimImage = UIImage(cgImage: generator.generate()!)
+        img = UIImage(cgImage: generator.generate()!)
     }
     
+    var imgArr = [UIImage]()
+    var textArr = [String]()
+    
     @IBAction func doneButton(_ sender: Any) {
+        
+        /*imgArr.append(img)
+        textArr.append(textForQR)
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let genTableVC = storyboard.instantiateViewController(identifier: "TableGEN") as? GenerateTableVC {
-            genTableVC.objects.append(QRData(qrImg: img, qrType: "Text", qrInfo: textForQR))
+            show(genTableVC, sender: nil)
+        }*/
+        
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+            qrData = QRDataMO(context: appDelegate.persistentContainer.viewContext)
+            qrData.qrInfo = textForQR
+            qrData.qrType = "Text"
+            qrData.qrImg = img.pngData()
+            
+            print("djskdjsaldjlkasdkasljaddklajdklsask")
+            appDelegate.saveContext()
+        }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let genTableVC = storyboard.instantiateViewController(identifier: "TableGEN") as? GenerateTableVC {
             show(genTableVC, sender: nil)
         }
+        
+        //popToRootViewController(animated: true)
+        
     }
     
     @IBAction func shareButton(_ sender: UIButton) {
@@ -61,6 +93,7 @@ class QRGeneratorEditVC: UIViewController {
     
     
     //MARK: - Work with Segue
+    
     @IBAction func unwind( _ seg: UIStoryboardSegue) {
         if seg.identifier == "saveSegue" {
             guard seg.identifier == "saveSegue" else {return}
@@ -72,7 +105,10 @@ class QRGeneratorEditVC: UIViewController {
             guard seg.identifier == "changeSegue" else {return}
             let sourceVC = seg.source as! EditTextTableVC
             textForQR = sourceVC.text
-            genOrPlace()
+            let generator = EFQRCodeGenerator(content: textForQR)
+            qrImageView.image = UIImage(cgImage: generator.generate()!)
+            claimImage = UIImage(cgImage: generator.generate()!)
+            img = UIImage(cgImage: generator.generate()!)
         }
     }
     
@@ -91,6 +127,7 @@ class QRGeneratorEditVC: UIViewController {
             let navigationVC = segue.destination as! UINavigationController
             let newVC = navigationVC.topViewController as! EditTextTableVC
             newVC.text = self.textForQR
+            
         }
     }
     

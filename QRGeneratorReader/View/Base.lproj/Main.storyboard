@@ -19,18 +19,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0E-GC-Bpg">
-                                <rect key="frame" x="162" y="433" width="91" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0E-GC-Bpg">
+                                <rect key="frame" x="57" y="298" width="300" height="307"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="307" id="30D-p3-bxE"/>
+                                    <constraint firstAttribute="width" constant="300" id="tKr-PH-96y"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
                                 <connections>
                                     <action selector="startScanning:" destination="y7c-Ka-1hW" eventType="touchUpInside" id="QCZ-6R-7gu"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qrScan3" translatesAutoresizingMaskIntoConstraints="NO" id="J6S-Hl-p9M">
+                                <rect key="frame" x="57" y="298" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="Q6s-10-fXE"/>
+                                    <constraint firstAttribute="height" constant="300" id="tat-NB-PSD"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="QGE-QF-FT7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="P0E-GC-Bpg" firstAttribute="top" secondItem="QGE-QF-FT7" secondAttribute="top" constant="210" id="ADb-2C-JgL"/>
+                            <constraint firstItem="P0E-GC-Bpg" firstAttribute="leading" secondItem="QGE-QF-FT7" secondAttribute="leading" constant="57" id="VCS-QT-xOk"/>
+                            <constraint firstItem="QGE-QF-FT7" firstAttribute="trailing" secondItem="P0E-GC-Bpg" secondAttribute="trailing" constant="57" id="Wwc-DM-JeZ"/>
+                            <constraint firstItem="QGE-QF-FT7" firstAttribute="trailing" secondItem="J6S-Hl-p9M" secondAttribute="trailing" constant="57" id="Zz1-AW-cmh"/>
+                            <constraint firstItem="QGE-QF-FT7" firstAttribute="bottom" secondItem="J6S-Hl-p9M" secondAttribute="bottom" constant="215" id="bbv-nt-bfn"/>
+                            <constraint firstItem="QGE-QF-FT7" firstAttribute="bottom" secondItem="P0E-GC-Bpg" secondAttribute="bottom" constant="208" id="bqx-V6-hSj"/>
+                            <constraint firstItem="J6S-Hl-p9M" firstAttribute="top" secondItem="QGE-QF-FT7" secondAttribute="top" constant="210" id="gTB-nn-ean"/>
+                            <constraint firstItem="J6S-Hl-p9M" firstAttribute="leading" secondItem="QGE-QF-FT7" secondAttribute="leading" constant="57" id="zrr-CF-E7z"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="QR Reader" id="lXT-t0-VHI">
                         <leftBarButtonItems>
@@ -65,7 +91,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tQ5-gv-Wk4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2412" y="-164"/>
+            <point key="canvasLocation" x="2411.594202898551" y="-164.0625"/>
         </scene>
         <!--Поддерживаемые коды-->
         <scene sceneID="y9z-ga-Awt">
@@ -919,7 +945,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IyW-8i-wWZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4589.8550724637689" y="843.75"/>
+            <point key="canvasLocation" x="4428" y="844"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CDb-QZ-JbI">
@@ -1343,6 +1369,7 @@
         <image name="paintpalette.fill" catalog="system" width="128" height="105"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="plus.magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="qrScan3" width="1580" height="1580"/>
         <image name="qrcode" catalog="system" width="128" height="114"/>
         <image name="qrcode.viewfinder" catalog="system" width="128" height="115"/>
         <image name="questionmark.circle" catalog="system" width="128" height="121"/>

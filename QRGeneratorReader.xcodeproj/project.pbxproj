@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B0659DC28DF215F0054ABF1 /* not2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0B0659DB28DF215F0054ABF1 /* not2.wav */; };
+		0B0659DE28DF228C0054ABF1 /* not3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0B0659DD28DF228C0054ABF1 /* not3.mp3 */; };
+		0B0659E028DF22C40054ABF1 /* not4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0B0659DF28DF22C40054ABF1 /* not4.mp3 */; };
+		0B0659E228DF22ED0054ABF1 /* not5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0B0659E128DF22ED0054ABF1 /* not5.mp3 */; };
+		0B0659E428DF23290054ABF1 /* not6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0B0659E328DF23290054ABF1 /* not6.mp3 */; };
 		0B077FDE28CDA33700BFCE92 /* EditQRVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B077FDD28CDA33700BFCE92 /* EditQRVC.swift */; };
 		0B1A9CC728C345430016A159 /* GenerateTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1A9CC628C345430016A159 /* GenerateTableVC.swift */; };
 		0B1A9CC928C345820016A159 /* GenerateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1A9CC828C345820016A159 /* GenerateTableViewCell.swift */; };
@@ -32,6 +37,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B0659DB28DF215F0054ABF1 /* not2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = not2.wav; path = ../../../../../Downloads/not2.wav; sourceTree = "<group>"; };
+		0B0659DD28DF228C0054ABF1 /* not3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = not3.mp3; path = "../../../../../Downloads/Нужные фотки для всякого/not3.mp3"; sourceTree = "<group>"; };
+		0B0659DF28DF22C40054ABF1 /* not4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = not4.mp3; path = "../../../../../Downloads/Нужные фотки для всякого/not4.mp3"; sourceTree = "<group>"; };
+		0B0659E128DF22ED0054ABF1 /* not5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = not5.mp3; path = "../../../../../Downloads/Нужные фотки для всякого/not5.mp3"; sourceTree = "<group>"; };
+		0B0659E328DF23290054ABF1 /* not6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = not6.mp3; path = "../../../../../Downloads/Нужные фотки для всякого/not6.mp3"; sourceTree = "<group>"; };
 		0B077FDD28CDA33700BFCE92 /* EditQRVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditQRVC.swift; sourceTree = "<group>"; };
 		0B1A9CC628C345430016A159 /* GenerateTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateTableVC.swift; sourceTree = "<group>"; };
 		0B1A9CC828C345820016A159 /* GenerateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateTableViewCell.swift; sourceTree = "<group>"; };
@@ -108,7 +118,6 @@
 				0B4C052028BA4FFF00891747 /* View */,
 				0B4C051E28BA4FE100891747 /* Controller */,
 				0B4C051328BA4FDA00891747 /* Assets.xcassets */,
-				0B4C051528BA4FDA00891747 /* LaunchScreen.storyboard */,
 				0B4C051828BA4FDA00891747 /* Info.plist */,
 				0B4C051028BA4FD900891747 /* QRGeneratorReader.xcdatamodeld */,
 			);
@@ -144,6 +153,7 @@
 		0B4C052028BA4FFF00891747 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0B4C051528BA4FDA00891747 /* LaunchScreen.storyboard */,
 				0B4C050D28BA4FD900891747 /* Main.storyboard */,
 				0B1A9CC828C345820016A159 /* GenerateTableViewCell.swift */,
 				0B29053428D439610006768E /* HelpCollectionViewCell.swift */,
@@ -154,7 +164,12 @@
 		0B6D4DBB28D8D63A0000638C /* Sound */ = {
 			isa = PBXGroup;
 			children = (
+				0B0659DB28DF215F0054ABF1 /* not2.wav */,
 				0B3F204128DA1DF600E62CEB /* iphone_sound.mp3 */,
+				0B0659DD28DF228C0054ABF1 /* not3.mp3 */,
+				0B0659DF28DF22C40054ABF1 /* not4.mp3 */,
+				0B0659E128DF22ED0054ABF1 /* not5.mp3 */,
+				0B0659E328DF23290054ABF1 /* not6.mp3 */,
 			);
 			path = Sound;
 			sourceTree = "<group>";
@@ -228,7 +243,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B0659DC28DF215F0054ABF1 /* not2.wav in Resources */,
 				0B4C051728BA4FDA00891747 /* LaunchScreen.storyboard in Resources */,
+				0B0659E428DF23290054ABF1 /* not6.mp3 in Resources */,
+				0B0659E028DF22C40054ABF1 /* not4.mp3 in Resources */,
+				0B0659DE28DF228C0054ABF1 /* not3.mp3 in Resources */,
+				0B0659E228DF22ED0054ABF1 /* not5.mp3 in Resources */,
 				0B3F204228DA1DF600E62CEB /* iphone_sound.mp3 in Resources */,
 				0B4C051428BA4FDA00891747 /* Assets.xcassets in Resources */,
 				0B4C050F28BA4FD900891747 /* Main.storyboard in Resources */,

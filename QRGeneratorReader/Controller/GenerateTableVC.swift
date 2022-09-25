@@ -6,50 +6,37 @@
 //
 
 import UIKit
+import CoreData
 
-class GenerateTableVC: UITableViewController {
+class GenerateTableVC: UITableViewController , NSFetchedResultsControllerDelegate {
     
-    var objects = [
-        QRData(qrImg: UIImage(named: "qr1")!, qrType: "Text", qrInfo: "dkslafdjl"),
-        QRData(qrImg: UIImage(named: "qr2")!, qrType: "Text", qrInfo: "akfhdahff")
-    ]
+    var fetchResultController: NSFetchedResultsController<QRDataMO>!
+    
+    var objects = [QRDataMO]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = "QR Generator"
         self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
-
-    //MARK: - IBAction segue
-    /*
-    @IBAction func unwindSegue(segue: UIStoryboardSegue){
-        guard segue.identifier == "saveSegue" else { return }
-        let sourceVC = segue.source as! SaveTestTableVC
-        let emogi = sourceVC.emogi
         
-        if let selectedIndexPath = tableView.indexPathForSelectedRow {
-            objects[selectedIndexPath.row] = emogi
-            tableView.reloadRows(at: [selectedIndexPath], with: .fade)
-        } else {
-            let newIndexPath = IndexPath(row: objects.count, section: 0)
-            objects.append(emogi)
-            tableView.insertRows(at: [newIndexPath], with: .fade)
+        let fetchRequest: NSFetchRequest<QRDataMO> = QRDataMO.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "qrInfo", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+            let context = appDelegate.persistentContainer.viewContext
+            fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+            fetchResultController.delegate = self
+            
+            do {
+                try fetchResultController.performFetch()
+                if let fetchedObjects = fetchResultController.fetchedObjects {
+                    objects = fetchedObjects
+                }
+            } catch { print(error) }
         }
     }
-    */
-    /*
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        guard segue.identifier == "editEmoji" else { return }
-        let indexPath = tableView.indexPathForSelectedRow!
-        let emogi = objects[indexPath.row]
-        let navigationVC = segue.destination as! UINavigationController
-        let newEmojiVC = navigationVC.topViewController as! SaveTestTableVC
-        newEmojiVC.emogi = emogi
-        newEmojiVC.title = "Edit"
-    }
-     */
     
     // MARK: - Table view data source
 
@@ -79,10 +66,20 @@ class GenerateTableVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
         if (editingStyle == .delete ) {
+            if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+                let context = appDelegate.persistentContainer.viewContext
+                let objForDelete = objects[indexPath.row]
+                
+                context.delete(objForDelete)
+                appDelegate.saveContext()
+            }
             objects.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
         }
+        
     }
     
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
@@ -91,9 +88,18 @@ class GenerateTableVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         
-        let moveEmoji = objects.remove(at: sourceIndexPath.row)
-        objects.insert(moveEmoji, at: destinationIndexPath.row)
-        tableView.reloadData()
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+            let context = appDelegate.persistentContainer.viewContext
+            
+            let moveEmoji = objects.remove(at: sourceIndexPath.row)
+            
+            context.delete(moveEmoji)
+            appDelegate.saveContext()
+            
+            objects.insert(moveEmoji, at: destinationIndexPath.row)
+            tableView.reloadData()
+        }
+        
     }
     
 }

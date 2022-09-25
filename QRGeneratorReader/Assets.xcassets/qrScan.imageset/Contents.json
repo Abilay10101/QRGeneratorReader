@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "qr-code-scanning-scan-me-read-bar-code-mobility-generating-app-coding-icon-recognition-reading-qr-code-flat-style_399089-1628.jpeg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -16,6 +16,27 @@ class SettingsTableVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let userDefaults = UserDefaults()
+        if let data = userDefaults.object(forKey: "dataMata") {
+            if let message = data as? Bool {
+                if message {
+                    soundSwitch.isOn = true
+                } else {
+                    soundSwitch.isOn = false
+                }
+            }
+        }
+        
+        let userDefaults2 = UserDefaults()
+        if let data = userDefaults2.object(forKey: "dataMatka") {
+            if let message = data as? Bool {
+                if message {
+                    vibroSwitch.isOn = true
+                } else {
+                    vibroSwitch.isOn = false
+                }
+            }
+        }
         
     }
     

@@ -31,7 +31,7 @@ class QRReaderVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         setupVideo()
-        startRunning()
+        
     }
     
     
@@ -67,7 +67,7 @@ class QRReaderVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate{
         }
     
     func playSound() {
-        let url = Bundle.main.url(forResource: "iphone_sound", withExtension: "mp3")!
+        let url = Bundle.main.url(forResource: "not6", withExtension: "mp3")!
 
         do {
             player = try AVAudioPlayer(contentsOf: url)
@@ -108,16 +108,16 @@ class QRReaderVC: UIViewController , AVCaptureMetadataOutputObjectsDelegate{
                     let alert = UIAlertController(title: "QR Code", message: object.stringValue, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Перейти", style: .default, handler: { action in
                         print(object.stringValue ?? "")
+                        if let url = URL(string: object.stringValue!) {
+                            UIApplication.shared.open(url)
+                        }
+                        self.view.layer.sublayers?.removeLast()
+                        self.session.stopRunning()
                     }))
                     alert.addAction(UIAlertAction(title: "Копировать", style: .default, handler: { action in
                         UIPasteboard.general.string = object.stringValue
-                        //self.view.layer.sublayers?.removeLast()
-                        //self.session.stopRunning()
-                        
-                        DispatchQueue.global(qos: .default).async {
-                            self.playSound()
-                        }
-                        
+                        self.view.layer.sublayers?.removeLast()
+                        self.session.stopRunning()
                     }))
                     present(alert, animated: true)
                     
