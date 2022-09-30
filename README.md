@@ -17,3 +17,13 @@
 - UserDefaults
 
 ## Preview
+
+<a href="https://youtu.be/XjqCmPRY6VA" target="_blank"><img src="https://github.com/Abilay10101/QRGeneratorReader/blob/main/img1.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+
+## Screenshots
+
+<img src="https://github.com/Abilay10101/QRGeneratorReader/blob/main/img1.jpg" alt="drawing" width="200"/> <img src="https://github.com/Abilay10101/QRGeneratorReader/blob/main/img2.jpg" alt="drawing" width="200"/> <img src="https://github.com/Abilay10101/QRGeneratorReader/blob/main/img3.jpg" alt="drawing" width="200"/>
+
+
+
