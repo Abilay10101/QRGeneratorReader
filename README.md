@@ -1,4 +1,7 @@
+<img src="https://github.com/Abilay10101/QRGeneratorReader/blob/main/icon.png" alt="drawing" width="200"/>
+
 # QRGeneratorReader
+
 :sunny: QR Cede Generator and Scanner for your daily use.
 
 :iphone: Scan QR code anytime and anywhere.
