@@ -22,7 +22,7 @@
 ## Preview
 
 <a href="https://youtu.be/XjqCmPRY6VA" target="_blank"><img src="https://github.com/Abilay10101/QRGeneratorReader/blob/main/img1.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+alt="IMAGE ALT TEXT HERE" width="240" border="10" /></a>
 
 ## Screenshots
 
